@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: postgres
+    database: hbnb  
+    schema: raw  
+    tables:
+      - name: raw_calendar
+      - name: raw_listings
+      - name: raw_amenities_changelog
+

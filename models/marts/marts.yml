@@ -1,0 +1,13 @@
+
+version: 2
+
+models:
+  - name: listings_daily
+    description: "A starter dbt model"
+    columns:
+      - name: listing_id
+        description: "The listing id"
+        data_tests:
+          - not_null
+
+# Given more time, I would add more tests here. Particularly for the surrogate key listing_id||date
