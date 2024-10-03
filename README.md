@@ -12,22 +12,23 @@
         - Data Testing: I implemented only one basic data test for this exercise, rather than a comprehensive testing framework.
     - To recognize revenue from the calendar, I used today's date to determine if a reservation had already occurred and should be counted as revenue. This approach includes all relevant records.
     - The Generated_Reviews data source lacked the information needed to connect reviews to records in the final mart. In a real-world scenario, I would consult stakeholders to gain a better understanding of their review analysis requirements.
-    - I chose to ignore an edge case in Question 3B, as I believe it wasn't the designer's intention to address it. The issue would occur when a listing's has_lockbox changes from TRUE to FALSE during a reservation, potentially leading to incorrect results. This does not happen in the given dataset, and fixing this would require custom logic for a specific amenities combination, which I assumed wasn't the goal of the exercise. 
+    - I chose to ignore an edge case in Question 3B, as I believe it wasn't the exercise-designer's intention to address it. The issue would occur when a listing's has_lockbox changes from TRUE to FALSE during a reservation, potentially leading to incorrect results. This does not happen in the given dataset, and fixing this would require custom logic for a specific amenities combination, which I assumed wasn't the goal of the exercise. 
 
 ### My Approach to the Exercise
     1) Define the problem statement --> (Lack of insights in Revenue, Occupancy, Amenities, Reviews) and goal --> (Data model to enable the right insights)
-    2) Query the source data to explore and test key aspects, such as the number of listings, the timeframe, data structure, referential integrity, and uniqueness:
+    2) Initialize a dbt project and load the data to Snowflake
+    3) Query the source data to explore and test key aspects, such as the number of listings, the timeframe, data structure, referential integrity, and uniqueness:
         - Example: reservation_id in the Calendar is not unique across listings, which impacts downstream transformations.
         - Example: The timing of reviews is misaligned with the Calendar records.
         - Example: Listing data is current data, which would not be useful for historical context
-    3) Analyze business requirements from PDF
+    4) Analyze business requirements from PDF
         - Define Key Metrics to provide: Revenue & Occupancy Rate
         - Craft queries to answer the guiding questions in PDF.
         - Anticipate additional Analytic needs not covered above
-    4) Plan and structure the dbt project accordingly.
-    5) Anticipate future needs, such as converting additional amenities from JSON into columns.
-    6) Develop the necessary transformations.
-    7) Validate the final mart against the provided tips (from the PDF) and make adjustments as needed.
+    5) Plan and structure the dbt project accordingly.
+    6) Anticipate future needs, such as converting additional amenities from JSON into columns.
+    7) Develop the necessary transformations.
+    8) Validate the final mart against the provided tips (from the PDF) and make adjustments as needed.
 
 ### Data Model Explanation
     Output: A single table capturing the daily status of each listing, designed to provide insights into key business metrics and operational performance.
@@ -36,6 +37,9 @@
     - What is the average monthly price of listings?
     - Which listings provide the most revenue?
     - What is the average reservation length?
+    - Amenity groups that lead to longer stays 
+    - Pricing sweet spot by Neighborhood (could be used as a recommendation engine)
+    - Amenity groups that lead to longer stays 
 
 ### dbt-project Structure
     Staging:
